@@ -9,5 +9,5 @@ export const login = async (data: z.infer<typeof LoginSchema>) => {
   if (!validateFields.success) {
     return { error: 'error' };
   }
-  return { error: 'success' };
+  return { success: 'success' };
 };
