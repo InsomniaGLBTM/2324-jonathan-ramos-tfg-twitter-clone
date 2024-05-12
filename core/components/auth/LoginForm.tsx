@@ -11,8 +11,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { login } from '@/core/actions/auth/login';
-import { namespaces } from '@/core/constants/namespaces.constants';
-import { Routes } from '@/core/constants/routes.constants';
+import { Namespaces } from '@/core/constants/namespaces.constants';
+import { ROUTES } from '@/core/constants/routes.constants';
 import { LoginSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
@@ -39,14 +39,14 @@ export const LoginForm = () => {
         response?.error &&
           toast({
             variant: 'destructive',
-            title: t('error', { ns: namespaces.COMMON }),
+            title: t('error', { ns: Namespaces.COMMON }),
           });
       });
     });
   };
   return (
     <div className="space-y-8">
-      <h3 className="font-semibold text-2xl">{t('header')}</h3>
+      <h3 className="font-semibold text-2xl">{t('loginHeader')}</h3>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -65,7 +65,7 @@ export const LoginForm = () => {
                     disabled={isPending}
                   />
                 </FormControl>
-                <FormMessage errorMessage={t('emailError')} />
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -82,7 +82,7 @@ export const LoginForm = () => {
                     disabled={isPending}
                   />
                 </FormControl>
-                <FormMessage errorMessage={t('passwordError')} />
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -96,7 +96,7 @@ export const LoginForm = () => {
           </Button>
         </form>
       </Form>
-      <Link href={Routes.FORGOT_PASSWORD}>
+      <Link href={ROUTES.auth.forgotPassword}>
         <Button
           type="button"
           className="w-full mt-4"
@@ -108,7 +108,10 @@ export const LoginForm = () => {
       </Link>
       <p>
         {t('dont')}{' '}
-        <Link href={Routes.SIGNUP} className="text-sky-500 hover:underline">
+        <Link
+          href={ROUTES.auth.signup}
+          className="text-sky-500 hover:underline"
+        >
           {t('signUp')}
         </Link>
       </p>

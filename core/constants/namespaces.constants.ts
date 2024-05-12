@@ -1,4 +1,4 @@
-export const namespaces = {
+export const Namespaces = {
   COMMON: 'common',
-  LOGIN: 'login',
+  AUTH: 'auth',
 };

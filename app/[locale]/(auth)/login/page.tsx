@@ -1,9 +1,9 @@
 import { LoginForm } from '@/core/components/auth/LoginForm';
-import { namespaces } from '@/core/constants/namespaces.constants';
+import { Namespaces } from '@/core/constants/namespaces.constants';
 import TranslationsProvider from '@/core/providers/i18n/TranslationsProvider';
 import initTranslations from '@/core/services/i18n/i18n.service';
 
-const i18nNamespaces = [namespaces.LOGIN, namespaces.COMMON];
+const i18nNamespaces = [Namespaces.AUTH, Namespaces.COMMON];
 
 export default async function Login({
   params: { locale },
