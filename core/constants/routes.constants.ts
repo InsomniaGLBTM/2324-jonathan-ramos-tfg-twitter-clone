@@ -4,5 +4,10 @@ export const ROUTES = {
     signup: '/signup',
     forgotPassword: '/forgot-password',
   },
-  home: '/home',
+  mainApp: {
+    home: '/home',
+    profile: '/{slug}',
+    settings: '/settings',
+    status: '/{slug}/status/{slug}',
+  },
 };
