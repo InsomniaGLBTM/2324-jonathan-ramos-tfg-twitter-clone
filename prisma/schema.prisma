@@ -37,14 +37,13 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  User   User   @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
   likedBy User[] @relation("likedPosts")
 
-  replies Post[]  @relation("replies")
-  replyTo Post?   @relation("replies", fields: [postId], references: [id])
-  postId  String?
+  replies Post[] @relation("replies")
+  replyTo Post[] @relation("replies")
 }
 
 model Account {
