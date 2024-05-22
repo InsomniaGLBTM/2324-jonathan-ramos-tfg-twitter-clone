@@ -27,9 +27,6 @@ export default auth((request) => {
   return i18nRouter(request, i18nConfig);
 });
 
-// export default
-// });
-
 // only applies this middleware to files in the app directory
 export const config = {
   matcher: '/((?!api|static|.*\\..*|_next).*)',
