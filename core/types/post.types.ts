@@ -5,6 +5,7 @@ export interface PostType extends Post {
   user: SimpleUser;
   likedBy: { id: string }[];
   replies: { id: string }[];
+  repliesCount?: number;
 }
 
 export interface ComplexPostType extends PostType {
