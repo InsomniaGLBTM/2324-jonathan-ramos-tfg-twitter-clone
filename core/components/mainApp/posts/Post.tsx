@@ -1,3 +1,4 @@
+import { ImageRoute } from '@/core/constants/resources.constants';
 import { ROUTES } from '@/core/constants/routes.constants';
 import { ComplexPostType, PostType } from '@/core/types/post.types';
 import { getMultipleSlugRoute, getRoute } from '@/core/utils/route.utils';
@@ -26,7 +27,7 @@ export default function Post({ post, session }: Props) {
     <div className="flex px-4 py-2 border-b-[1px] border-gray-600 hover:backdrop-brightness-150">
       <Link href={profileRoute} className="h-fit">
         <Image
-          src={post.user.image || '/profile-picture.png'}
+          src={post.user.image || ImageRoute.PROFILE_PICTURE}
           alt="Profile picture"
           width={40}
           height={40}

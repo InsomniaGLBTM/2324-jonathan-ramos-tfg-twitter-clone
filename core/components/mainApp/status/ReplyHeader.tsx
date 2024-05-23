@@ -1,4 +1,5 @@
 import { Namespaces } from '@/core/constants/namespaces.constants';
+import { ImageRoute } from '@/core/constants/resources.constants';
 import { ROUTES } from '@/core/constants/routes.constants';
 import initTranslations from '@/core/services/i18n/i18n.service';
 import { getLocaleFromCookies } from '@/core/utils/cookies.utils';
@@ -27,7 +28,7 @@ export default async function ReplyHeader({
     <div className="flex p-4 w-full border-b-[2px] border-gray-600">
       <Link href={profileRoute} className="self-start">
         <Image
-          src={session?.user?.image || '/profile-picture.png'}
+          src={session?.user?.image || ImageRoute.PROFILE_PICTURE}
           alt={t('profilePicture')}
           width={40}
           height={40}
