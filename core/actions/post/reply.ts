@@ -13,7 +13,7 @@ export const reply = async (data: z.infer<typeof ReplyPostSchema>) => {
   }
   const { body, userId, replyPostIds } = validateFields.data;
 
-  const post = await db.post.create({
+  await db.post.create({
     data: {
       body: body,
       userId: userId,
@@ -22,7 +22,6 @@ export const reply = async (data: z.infer<typeof ReplyPostSchema>) => {
       },
     },
   });
-  console.log(post);
   revalidatePath(ROUTES.mainApp.home);
 
   return { success: 'success' };
