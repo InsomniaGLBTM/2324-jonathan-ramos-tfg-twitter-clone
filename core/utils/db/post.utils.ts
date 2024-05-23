@@ -100,6 +100,6 @@ export const getPostById = async (id: string) => {
     }
     return post as unknown as ComplexPostType;
   } catch {
-    return {} as ComplexPostType;
+    return null;
   }
 };
