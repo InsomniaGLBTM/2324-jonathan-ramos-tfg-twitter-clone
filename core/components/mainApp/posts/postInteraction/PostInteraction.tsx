@@ -26,6 +26,7 @@ export default function PostInteraction({
         username={session.user.username}
       />
       <LikeButton
+        key={postId}
         userId={session?.user.id || ''}
         value={likes}
         isLiked={isLiked}
