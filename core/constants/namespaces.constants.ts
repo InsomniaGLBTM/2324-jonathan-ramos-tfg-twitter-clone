@@ -3,4 +3,5 @@ export const Namespaces = {
   AUTH: 'auth',
   NAV_BAR: 'navBar',
   HOME: 'home',
+  STATUS: 'status',
 };
