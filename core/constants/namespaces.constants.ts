@@ -4,4 +4,5 @@ export const Namespaces = {
   NAV_BAR: 'navBar',
   HOME: 'home',
   STATUS: 'status',
+  PROFILE: 'profile',
 };
