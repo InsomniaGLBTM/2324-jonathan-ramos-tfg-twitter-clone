@@ -4,6 +4,7 @@ import {
   LOGIN_REDIRECT,
   NOT_LOGGED_IN_REDIRECT,
   authRoutes,
+  rootRoute,
 } from './core/constants/authRoutes.constants';
 import { i18nConfig } from './core/services/i18n/i18nConifg';
 import authConfig from './core/services/nextAuth/auth.config';
@@ -17,7 +18,9 @@ export default auth((request) => {
 
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-  if (isAuthRoute && isLoggedIn) {
+  const isRootRoute = rootRoute === nextUrl.pathname;
+
+  if ((isAuthRoute && isLoggedIn) || (isRootRoute && isLoggedIn)) {
     return Response.redirect(new URL(LOGIN_REDIRECT, nextUrl));
   }
 
