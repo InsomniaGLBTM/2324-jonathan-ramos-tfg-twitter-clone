@@ -19,7 +19,7 @@ export default async function PostPage({ params: { postId, locale } }: Props) {
 
   if (!post) {
     return (
-      <div className="w-full flex mt-20 justify-center">
+      <div className="w-full flex pt-20 justify-center border-r-[1px] border-gray-600 min-h-screen">
         <p className="font-bold text-2xl">{t('notFound')}</p>
       </div>
     );
@@ -28,7 +28,7 @@ export default async function PostPage({ params: { postId, locale } }: Props) {
   replyPostIds.push(post.id);
 
   return (
-    <div>
+    <div className="border-r-[1px] border-gray-600 min-h-screen">
       {post.replyTo.length !== 0 && (
         <Posts session={session!} posts={post.replyTo} />
       )}

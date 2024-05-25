@@ -18,7 +18,7 @@ export default async function Profile({ params: { username, locale } }: Props) {
 
   if (!user) {
     return (
-      <div className="w-full flex mt-20 justify-center">
+      <div className="w-full flex pt-20 justify-center border-r-[1px] border-gray-600 min-h-screen">
         <p className="font-bold text-2xl">{t('notFound')}</p>
       </div>
     );
@@ -30,7 +30,7 @@ export default async function Profile({ params: { username, locale } }: Props) {
     isCurrentUserProfile = true;
   }
   return (
-    <div>
+    <div className="border-r-[1px] border-gray-600 min-h-screen">
       <ProfileHeader user={user} isCurrentUserProfile={isCurrentUserProfile} />
       <Posts posts={user?.post} session={session!} />
     </div>

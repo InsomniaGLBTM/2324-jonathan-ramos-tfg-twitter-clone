@@ -15,7 +15,7 @@ export default async function Home() {
 
   const { t } = await initTranslations(locale, i18nNamespaces);
   return (
-    <div>
+    <div className="border-r-[1px] border-gray-600 min-h-screen">
       <Header session={session!} />
       <Posts session={session!} posts={posts} notFound={t('notFound')} />
     </div>
