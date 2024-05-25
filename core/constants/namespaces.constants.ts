@@ -5,4 +5,5 @@ export const Namespaces = {
   HOME: 'home',
   STATUS: 'status',
   PROFILE: 'profile',
+  SETTINGS: 'settings',
 };

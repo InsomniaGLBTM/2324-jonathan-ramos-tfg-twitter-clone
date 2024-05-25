@@ -3,16 +3,15 @@ import { Namespaces } from '@/core/constants/namespaces.constants';
 import TranslationsProvider from '@/core/providers/i18n/TranslationsProvider';
 import initTranslations from '@/core/services/i18n/i18n.service';
 import { auth } from '@/core/services/nextAuth/auth.service';
+import { getLocaleFromCookies } from '@/core/utils/cookies.utils';
 import { FaTwitter } from 'react-icons/fa';
 import LogoutButton from './LogoutButton';
 import NavLinks from './NavLinks';
-type Props = {
-  locale: string;
-};
 
 const i18nNamespaces = [Namespaces.NAV_BAR];
 
-export default async function NavBar({ locale }: Props) {
+export default async function NavBar() {
+  const locale = getLocaleFromCookies();
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   const session = await auth();
 
