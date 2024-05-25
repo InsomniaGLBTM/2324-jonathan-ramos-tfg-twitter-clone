@@ -16,6 +16,7 @@ import { ROUTES } from '@/core/constants/routes.constants';
 import { SignupSchema } from '@/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -25,6 +26,7 @@ export const SignupForm = () => {
   const { t } = useTranslation();
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof SignupSchema>>({
     resolver: zodResolver(SignupSchema),
     defaultValues: {
@@ -38,11 +40,17 @@ export const SignupForm = () => {
   const onSubmit = (data: z.infer<typeof SignupSchema>) => {
     startTransition(() => {
       sigup(data).then((response) => {
-        response?.error &&
+        response?.success &&
           toast({
-            variant: 'destructive',
-            title: t('error', { ns: Namespaces.COMMON }),
+            variant: 'default',
+            title: t(`${response.success}`, { ns: Namespaces.COMMON }),
           });
+        response?.error
+          ? toast({
+              variant: 'destructive',
+              title: t(`${response.error}`, { ns: Namespaces.COMMON }),
+            })
+          : router.push(ROUTES.auth.login);
       });
     });
   };

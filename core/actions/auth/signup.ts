@@ -1,6 +1,6 @@
 'use server';
 
-import { getUserByEmail } from '@/core/utils/db/user.utils';
+import { getUserByEmail, getUserByusername } from '@/core/utils/db/user.utils';
 import { db } from '@/lib/db';
 import { SignupSchema } from '@/schemas';
 import bcryptjs from 'bcryptjs';
@@ -10,7 +10,7 @@ export const sigup = async (data: z.infer<typeof SignupSchema>) => {
   const validateFields = SignupSchema.safeParse(data);
 
   if (!validateFields.success) {
-    return { error: 'error' };
+    return { error: 'data' };
   }
 
   const { email, name, password, username } = validateFields.data;
@@ -23,14 +23,24 @@ export const sigup = async (data: z.infer<typeof SignupSchema>) => {
     return { error: 'user' };
   }
 
-  await db.user.create({
-    data: {
-      name,
-      username,
-      email,
-      password: hashedPassword,
-    },
-  });
+  const userByname = await getUserByusername(username);
 
-  return { success: 'success' };
+  if (userByname) {
+    return { error: 'user' };
+  }
+
+  try {
+    await db.user.create({
+      data: {
+        name,
+        username,
+        email,
+        password: hashedPassword,
+      },
+    });
+  } catch {
+    return { error: 'error' };
+  }
+
+  return { success: 'successUser' };
 };
