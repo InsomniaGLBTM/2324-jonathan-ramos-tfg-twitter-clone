@@ -36,8 +36,9 @@ export default function Post({ post, session }: Props) {
       </Link>
       <div className="ml-3 w-full">
         <div className="w-fit">
-          <Link href={profileRoute} className="w-fit">
-            <p className="font-semibold">{post.user.username}</p>
+          <Link href={profileRoute} className="w-fit flex">
+            <p className="font-semibold">{post.user.name}</p>
+            <p className="text-gray-400 ml-1">@{post.user.username}</p>
           </Link>
         </div>
 

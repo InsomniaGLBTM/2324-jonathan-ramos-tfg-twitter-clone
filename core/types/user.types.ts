@@ -4,6 +4,7 @@ import { PostType } from './post.types';
 export type SimpleUser = {
   image: User['image'];
   username: User['username'];
+  name: User['name'];
 };
 
 export interface ComplexUser extends User {

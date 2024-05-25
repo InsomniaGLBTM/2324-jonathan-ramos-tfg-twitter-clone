@@ -39,6 +39,7 @@ export const getUserByusername = async (username: string) => {
             user: {
               select: {
                 username: true,
+                name: true,
                 image: true,
               },
             },

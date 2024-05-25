@@ -6,6 +6,7 @@ import authConfig from './auth.config';
 
 type ExtendedUser = DefaultSession['user'] & {
   username: string;
+  name: string;
   id: string;
   image: string | null | undefined;
   profileCoverImage: string | null | undefined;
@@ -23,6 +24,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const user = await getUserById(token.sub);
 
         session.user.username = user?.username || '';
+        session.user.name = user?.name || '';
         session.user.id = user?.id || '';
         session.user.image = user?.image;
         session.user.profileCoverImage = user?.profileCoverImage;
