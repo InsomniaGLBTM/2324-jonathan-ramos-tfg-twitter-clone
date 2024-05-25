@@ -6,7 +6,8 @@
     "dev": "i18nexus pull && next dev",
     "build": "i18nexus pull && next build",
     "start": "i18nexus pull && next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.1.0",
