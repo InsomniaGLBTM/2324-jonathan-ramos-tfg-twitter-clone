@@ -74,6 +74,7 @@ export const getPostById = async (id: string) => {
           include: {
             user: {
               select: {
+                name: true,
                 username: true,
                 image: true,
               },
