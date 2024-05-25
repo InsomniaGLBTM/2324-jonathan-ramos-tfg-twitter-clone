@@ -96,7 +96,7 @@ export const LoginForm = () => {
           </Button>
         </form>
       </Form>
-      <Link href={ROUTES.auth.forgotPassword}>
+      {/* <Link href={ROUTES.auth.forgotPassword}>
         <Button
           type="button"
           className="w-full mt-4"
@@ -105,7 +105,7 @@ export const LoginForm = () => {
         >
           {t('forgotPassword')}
         </Button>
-      </Link>
+      </Link> */}
       <p>
         {t('dont')}{' '}
         <Link
