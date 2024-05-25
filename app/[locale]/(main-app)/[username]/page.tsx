@@ -33,7 +33,6 @@ export default async function Profile({ params: { username, locale } }: Props) {
     const userFollows = await getUserFollows(username, session?.user.id!);
     isFollowed = !!userFollows;
   }
-  console.log(isFollowed);
   return (
     <div className="border-r-[1px] border-gray-600 min-h-screen">
       <ProfileHeader
