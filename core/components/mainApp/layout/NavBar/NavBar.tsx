@@ -17,7 +17,7 @@ export default async function NavBar({ locale }: Props) {
   const session = await auth();
 
   return (
-    <div className="md:min-w-[250px] mt-2">
+    <div className="md:min-w-[250px] pt-2">
       <FaTwitter
         size={IconSize.mainApp.navBar}
         className="text-sky-500 mb-6 ml-3"

@@ -11,10 +11,14 @@ export default async function MainAppLayout({
   };
 }) {
   return (
-    <div className="flex h-screen justify-center divide-x-[1px] divide-gray-600">
-      <NavBar locale={locale} />
-      <div className="max-w-[600px] min-w-[600px]">{children}</div>
-      <div></div>
+    <div className="flex w-screen h-screen divide-x-[1px] divide-gray-600 fixed">
+      <div className="xl:min-w-[600px] md:min-w-[300px]  flex justify-end b">
+        <NavBar locale={locale} />
+      </div>
+      <div className="flex-1 flex overflow-y-auto">
+        <div className="max-w-[600px] min-w-[600px] h-full">{children}</div>
+        <div className="flex-1 h-full"></div>
+      </div>
     </div>
   );
 }
