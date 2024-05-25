@@ -1,5 +1,7 @@
 import * as z from 'zod';
 
+//AUTH
+
 export const LoginSchema = z.object({
   email: z.string().email({ message: 'emailError' }),
   password: z.string().min(1, { message: 'emptyError' }),
@@ -11,6 +13,15 @@ export const SignupSchema = z.object({
   name: z.string().min(1, { message: 'emptyError' }),
   username: z.string().min(1, { message: 'emptyError' }),
 });
+
+//USERS
+
+export const EditUserSchema = z.object({
+  id: z.string(),
+  name: z.string().min(1, { message: 'emptyError' }),
+});
+
+//POSTS
 
 export const CreatePostSchema = z.object({
   body: z.string().min(1, { message: 'emptyError' }),

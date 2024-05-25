@@ -4,6 +4,7 @@ import initTranslations from '@/core/services/i18n/i18n.service';
 import { ComplexUser } from '@/core/types/user.types';
 import { getLocaleFromCookies } from '@/core/utils/cookies.utils';
 import Image from 'next/image';
+import EditUserButton from './EditUserButton';
 
 type Props = {
   user: ComplexUser;
@@ -17,7 +18,6 @@ export default async function ProfileHeader({
   isCurrentUserProfile,
 }: Props) {
   const locale = getLocaleFromCookies();
-
   const { t } = await initTranslations(locale, i18nNamespaces);
 
   return (
@@ -41,13 +41,14 @@ export default async function ProfileHeader({
       <div className="w-full p-3">
         <div className="w-full flex justify-end mb-10">
           {isCurrentUserProfile ? (
-            <div>{t('edit')}</div>
+            <EditUserButton user={user} />
           ) : (
             <div className="h-6"></div>
           )}
         </div>
         <div>
           <p className="font-bold text-xl">{user.name}</p>
+          <p className="text-gray-400">@{user.username}</p>
         </div>
         <div className="flex mt-2">
           <div className="flex">
