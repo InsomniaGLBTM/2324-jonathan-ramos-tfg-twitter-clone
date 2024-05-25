@@ -44,7 +44,7 @@ export default function Post({ post, session }: Props) {
 
         <div className="w-full">
           <Link href={postRoute}>
-            <p>{post.body}</p>
+            <p className="whitespace-pre-line">{post.body}</p>
           </Link>
         </div>
         <div className="flex space-x-10"></div>
