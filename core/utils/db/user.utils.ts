@@ -57,3 +57,23 @@ export const getUserByusername = async (username: string) => {
     return null;
   }
 };
+
+export const getUserFollows = async (username: string, userId: string) => {
+  try {
+    return (await db.user.findUnique({
+      where: {
+        username: username,
+        followedBy: {
+          some: {
+            id: userId,
+          },
+        },
+      },
+      select: {
+        id: true,
+      },
+    })) as ComplexUser;
+  } catch {
+    return null;
+  }
+};

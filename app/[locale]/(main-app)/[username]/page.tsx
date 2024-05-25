@@ -3,7 +3,7 @@ import ProfileHeader from '@/core/components/mainApp/profile/ProfileHeader';
 import { Namespaces } from '@/core/constants/namespaces.constants';
 import initTranslations from '@/core/services/i18n/i18n.service';
 import { auth } from '@/core/services/nextAuth/auth.service';
-import { getUserByusername } from '@/core/utils/db/user.utils';
+import { getUserByusername, getUserFollows } from '@/core/utils/db/user.utils';
 
 type Props = {
   params: { username: string; locale: string };
@@ -25,13 +25,23 @@ export default async function Profile({ params: { username, locale } }: Props) {
   }
 
   let isCurrentUserProfile = false;
+  let isFollowed = false;
 
   if (session?.user.id === user?.id) {
     isCurrentUserProfile = true;
+  } else {
+    const userFollows = await getUserFollows(username, session?.user.id!);
+    isFollowed = !!userFollows;
   }
+  console.log(isFollowed);
   return (
     <div className="border-r-[1px] border-gray-600 min-h-screen">
-      <ProfileHeader user={user} isCurrentUserProfile={isCurrentUserProfile} />
+      <ProfileHeader
+        user={user}
+        isCurrentUserProfile={isCurrentUserProfile}
+        isFollowed={isFollowed}
+        sessionUserId={session?.user.id!}
+      />
       <Posts posts={user?.post} session={session!} />
     </div>
   );

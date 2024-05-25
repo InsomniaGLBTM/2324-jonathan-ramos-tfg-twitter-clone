@@ -5,10 +5,13 @@ import { ComplexUser } from '@/core/types/user.types';
 import { getLocaleFromCookies } from '@/core/utils/cookies.utils';
 import Image from 'next/image';
 import EditUserButton from './EditUserButton';
+import FollowUserButton from './FollowUserButton';
 
 type Props = {
+  sessionUserId: string;
   user: ComplexUser;
   isCurrentUserProfile: boolean;
+  isFollowed: boolean;
 };
 
 const i18nNamespaces = [Namespaces.PROFILE];
@@ -16,6 +19,8 @@ const i18nNamespaces = [Namespaces.PROFILE];
 export default async function ProfileHeader({
   user,
   isCurrentUserProfile,
+  isFollowed,
+  sessionUserId,
 }: Props) {
   const locale = getLocaleFromCookies();
   const { t } = await initTranslations(locale, i18nNamespaces);
@@ -43,7 +48,11 @@ export default async function ProfileHeader({
           {isCurrentUserProfile ? (
             <EditUserButton user={user} />
           ) : (
-            <div className="h-6"></div>
+            <FollowUserButton
+              sessionUserId={sessionUserId}
+              userId={user.id}
+              isFollowed={isFollowed}
+            />
           )}
         </div>
         <div>
