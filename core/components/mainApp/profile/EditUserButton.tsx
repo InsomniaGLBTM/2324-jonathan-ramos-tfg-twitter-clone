@@ -16,7 +16,7 @@ type Props = {
   user: ComplexUser;
 };
 
-const i18nNamespaces = [Namespaces.PROFILE];
+const i18nNamespaces = [Namespaces.PROFILE, Namespaces.COMMON];
 
 export default async function EditUserButton({ user }: Props) {
   const locale = getLocaleFromCookies();

@@ -1,1 +1,1 @@
-{"data":"Datos no validos","error":"Algo salió mal","successUser":"Usuario creado con éxito","user":"El usuario ya existe"}
+{"data":"Datos no validos","emptyError":"No puede estar vacío","error":"Algo salió mal","successUser":"Usuario creado con éxito","user":"El usuario ya existe"}

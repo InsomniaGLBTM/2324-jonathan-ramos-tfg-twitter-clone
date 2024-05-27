@@ -1,13 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { editUser } from '@/core/actions/user/editUser';
@@ -65,7 +59,6 @@ export const EditUserForm = ({ user }: Props) => {
                     disabled={isPending}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />

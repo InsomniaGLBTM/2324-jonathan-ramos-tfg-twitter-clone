@@ -1,1 +1,1 @@
-{"data":"Invalid data","error":"Something went wrong","successUser":"User created with success","user":"User already exists"}
+{"data":"Invalid data","emptyError":"Cannot be empty","error":"Something went wrong","successUser":"User created with success","user":"User already exists"}
